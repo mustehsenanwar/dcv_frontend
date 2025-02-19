@@ -6,7 +6,7 @@
   --blue: #4169e1;
   --black: #000000;
   --gray-10: #fdfdfd;
-  --gray-90: #12141d;
+  --gray-90: #535862;
   --yellow: #ffc30e;
   --font-inter: 'Inter', san-serif;
 }
@@ -262,29 +262,43 @@ main .container .whatsapp-icon-container img {
 
 /* VIDEO SECTION*/
 #video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-inline: 16px;
   margin-top: 32px;
-  
+  height: 100vh; 
 }
 
 #video .video-wrapper {
-  padding: 8px;
-  border-radius: 10px;
+  height: 80vh; 
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  padding: 0.5rem;
+  border-radius: 15px;
   background: var(--white);
-  box-shadow: 0 0.67px 0.67px -0.34px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  border: 2px solid #D5D7DA;
 }
 
-#video .video-wrapper .video {
-  width: 100%;
-  /* aspect-ratio: 16/9; */
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-#video .video-wrapper img {
+#video .video-wrapper video {
   width: 100%;
   height: 100%;
+  object-fit: contain; 
+  display: block;
+}
+
+@media (max-width: 768px) {
+  #video {
+    margin-top: 16px;
+    height: auto; /* Allow container to size based on content */
+  }
+  
+  #video .video-wrapper {
+    height: 50vh; /* Reduce the height on mobile */
+    padding: 0.5rem;
+  }
 }
 
 /* PERFORMANCE SECTION */
@@ -346,7 +360,7 @@ main .container .whatsapp-icon-container img {
   height: 438px;
   padding: 16px;
   border-radius: 24px;
-  background: var(--blue);
+  background: var(--white);
 }
 
 #performance .video-wrapper img {
@@ -1331,7 +1345,7 @@ footer .container .copyright p {
   }
 
   #users .user-chat .bottom-gradient {
-    background-image: linear-gradient(rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1));
+    background-image: linear-gradient(rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 1));
   }
 
   /* CARDS SECTION */
@@ -1633,7 +1647,7 @@ footer .container .copyright p {
   }
 
   #users .user-chat .bottom-gradient {
-    background-image: linear-gradient(rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1));
+    background-image: linear-gradient(rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 1));
   }
 
   #users .yellow-blur {
@@ -1775,7 +1789,7 @@ footer .container .copyright p {
     display: inline-block;
     position: absolute;
     top: -60px;
-    right: 0;
+    right: -12px;
   }
 
   /* PLACE ORDER SECTION */
