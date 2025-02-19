@@ -1533,6 +1533,39 @@ footer .container .copyright p {
     left: 36px;
   }
 
+
+
+#home .home-user-img1 {
+
+  animation: wiggle 3s ease-in-out infinite;
+}
+
+#home .home-user-img2 {
+
+  animation: wiggle 3s ease-in-out infinite 0.5s;
+}
+
+/* Define the wiggle keyframes */
+@keyframes wiggle {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(3px, -3px) rotate(1deg);
+  }
+  50% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  75% {
+    transform: translate(-3px, 3px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+  
+
   /* VIDEO */
   #video {
     padding-inline: 104px;

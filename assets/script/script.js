@@ -25,4 +25,55 @@ document.addEventListener('DOMContentLoaded', () => {
       header.classList.remove('scrolled');
     }
   });
+
+  // COUNTER ANIMATION
+  const counters = document.querySelectorAll('#home .card h3');
+  let hasAnimatedCounters = false; // Ensure the animation runs only once
+
+  // Animate a single counter from 0 to target value
+  function animateCounter(element, target, suffix, duration = 2000) {
+    let start = null;
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      const current = Math.min(Math.floor((progress / duration) * target), target);
+      element.textContent = current + suffix;
+      if (progress < duration) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Animate all counters by extracting numbers and suffixes from text
+  function animateCounters() {
+    if (hasAnimatedCounters) return;
+    counters.forEach(counter => {
+      const text = counter.textContent.trim();
+      // Capture the digits and the following characters (e.g., "+" or "%")
+      const match = text.match(/^(\d+)(.*)$/);
+      if (match) {
+        const target = parseInt(match[1], 10);
+        const suffix = match[2] || '';
+        animateCounter(counter, target, suffix);
+      }
+    });
+    hasAnimatedCounters = true;
+  }
+
+  // Use Intersection Observer to trigger the animation when the card section is in view
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        // Unobserve after triggering so it runs only once
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const cardWrapper = document.querySelector('#home .card-wrapper');
+  if (cardWrapper) {
+    observer.observe(cardWrapper);
+  }
 });
