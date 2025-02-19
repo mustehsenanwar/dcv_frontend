@@ -264,6 +264,7 @@ main .container .whatsapp-icon-container img {
 #video {
   padding-inline: 16px;
   margin-top: 32px;
+  
 }
 
 #video .video-wrapper {
@@ -276,7 +277,7 @@ main .container .whatsapp-icon-container img {
 
 #video .video-wrapper .video {
   width: 100%;
-  aspect-ratio: 16/9;
+  /* aspect-ratio: 16/9; */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -1123,6 +1124,13 @@ footer .container .copyright p {
     border-bottom: none;
     padding-top: 5px;
     padding-inline: 32px;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent */
+    backdrop-filter: blur(10px); /* Blurs content underneath */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+  }
+  header.scrolled:hover {
+    background-color: rgba(255, 255, 255, 1);
   }
   header.scrolled .container {
     padding: 8px 16px;
