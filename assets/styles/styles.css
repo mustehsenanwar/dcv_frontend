@@ -415,16 +415,23 @@ main .container .whatsapp-icon-container img {
 
 #performance .video-wrapper {
   width: 100%;
-  height: 438px;
+  max-width: 100%;
+  height: auto; /* Allow height to adjust */
   padding: 16px;
   border-radius: 24px;
   background: var(--white);
+  display: flex; /* Ensures the image stays centered */
+  justify-content: center;
+  align-items: center;
 }
 
 #performance .video-wrapper img {
   width: 100%;
-  height: 100%;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensures the entire GIF is visible without distortion */
+  max-width: 100%;
 }
+
 
 /* FEATURES SECTION */
 #features {
