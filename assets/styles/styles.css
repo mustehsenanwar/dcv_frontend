@@ -6,7 +6,7 @@
   --blue: #4169e1;
   --black: #000000;
   --gray-10: #fdfdfd;
-  --gray-90: #535862;
+  --gray-90: #12141d;
   --yellow: #ffc30e;
   --font-inter: 'Inter', san-serif;
 }
@@ -102,9 +102,8 @@ header .container .btn-menu {
   cursor: pointer;
 }
 
-/* Order Now Button */
 header .container .btn-order {
-  display: inline-block; /* Ensure it behaves like a button */
+  display: none;
   padding: 8px 16px;
   background: var(--blue);
   border-radius: 10px;
@@ -113,26 +112,8 @@ header .container .btn-order {
   color: white;
   font-size: 18px;
   font-weight: 600;
-  text-decoration: none;
-  text-align: center;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
-
-/* Hover Effect */
-header .container .btn-order:hover {
-  background: rgba(0, 123, 255, 0.9); /* Slightly darker blue */
-  transform: translateY(-2px);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Click Effect */
-header .container .btn-order:active {
-  transform: scale(0.96); /* Slight press effect */
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
-  background: rgba(0, 123, 255, 0.85); /* Softer blue on click */
-}
-
 
 
 /* MAIN*/
@@ -252,55 +233,16 @@ main .container .whatsapp-icon-container img {
   border: none;
   cursor: pointer;
 }
-/* Common styles for both buttons */
-#home .btn-wrapper a {
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
 
-/* Order Now Button */
-#home .btn-wrapper a.btn-order {
+#home .btn-wrapper button.btn-order {
   color: white;
   background: var(--yellow);
-  border: 1px solid var(--yellow);
 }
 
-#home .btn-wrapper a.btn-order:hover {
-  background: rgba(255, 195, 14, 0.9); /* Slightly darker yellow */
-  transform: translateY(-2px);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-#home .btn-wrapper a.btn-order:active {
-  transform: scale(0.95); /* Slight press effect */
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* See Price Button */
-#home .btn-wrapper a.btn-seePrice {
+#home .btn-wrapper button.btn-seePrice {
   color: var(--blue);
   background: transparent;
-  border: 1px solid var(--blue);
 }
-
-#home .btn-wrapper a.btn-seePrice:hover {
-  background: rgba(0, 123, 255, 0.05); /* Slight blue tint */
-  transform: translateY(-2px);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08);
-}
-
-#home .btn-wrapper a.btn-seePrice:active {
-  transform: scale(0.95); /* Slight press effect */
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
-}
-
 
 #home .yellow-blur {
   display: none;
@@ -320,43 +262,28 @@ main .container .whatsapp-icon-container img {
 
 /* VIDEO SECTION*/
 #video {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding-inline: 16px;
   margin-top: 32px;
-  height: 100vh; 
 }
 
 #video .video-wrapper {
-  height: 80vh; 
-  aspect-ratio: 16 / 9;
-  max-width: 100%;
-  padding: 0.5rem;
-  border-radius: 15px;
+  padding: 8px;
+  border-radius: 10px;
   background: var(--white);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.67px 0.67px -0.34px rgba(0, 0, 0, 0.34);
   overflow: hidden;
-  border: 2px solid #D5D7DA;
 }
 
-#video .video-wrapper video {
+#video .video-wrapper .video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#video .video-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: contain; 
-  display: block;
-}
-
-@media (max-width: 768px) {
-  #video {
-    margin-top: 16px;
-    height: auto; /* Allow container to size based on content */
-  }
-  
-  #video .video-wrapper {
-    height: 50vh; /* Reduce the height on mobile */
-    padding: 0.5rem;
-  }
 }
 
 /* PERFORMANCE SECTION */
@@ -415,23 +342,16 @@ main .container .whatsapp-icon-container img {
 
 #performance .video-wrapper {
   width: 100%;
-  max-width: 100%;
-  height: auto; /* Allow height to adjust */
+  height: 438px;
   padding: 16px;
   border-radius: 24px;
-  background: var(--white);
-  display: flex; /* Ensures the image stays centered */
-  justify-content: center;
-  align-items: center;
+  background: var(--blue);
 }
 
 #performance .video-wrapper img {
   width: 100%;
-  height: auto; /* Maintain aspect ratio */
-  object-fit: contain; /* Ensures the entire GIF is visible without distortion */
-  max-width: 100%;
+  height: 100%;
 }
-
 
 /* FEATURES SECTION */
 #features {
@@ -736,57 +656,17 @@ main .container .whatsapp-icon-container img {
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.05);
   border-radius: 8px;
 }
-/* Get Started Button */
+
 #pricing .pricing-card-wrapper .card .top-content .btn-container .btn-get-started {
   color: var(--black);
   background: var(--yellow);
   border: 1px solid rgba(255, 195, 14, 0.12);
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  cursor: pointer;
 }
 
-#pricing .pricing-card-wrapper .card .top-content .btn-container .btn-get-started:hover {
-  background: rgba(255, 195, 14, 0.9); /* Slightly darker yellow */
-  color: var(--black);
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-#pricing .pricing-card-wrapper .card .top-content .btn-container .btn-get-started:active {
-  transform: scale(0.96); /* Slight press effect */
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
-  background: rgba(255, 195, 14, 0.85); /* Even softer yellow on press */
-}
-
-/* Chat to Sales Button */
 #pricing .pricing-card-wrapper .card .top-content .btn-container .btn-chat {
   color: var(--gray-90);
   background: var(--white);
   border: 1px solid #d5d7da;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-#pricing .pricing-card-wrapper .card .top-content .btn-container .btn-chat:hover {
-  background: #f6f6f6; /* Slightly darker white */
-  color: var(--gray-90);
-  border-color: #c8cacc;
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-#pricing .pricing-card-wrapper .card .top-content .btn-container .btn-chat:active {
-  transform: scale(0.96); /* Slight press effect */
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
-  background: #eeeeee; /* Soft gray effect on press */
 }
 
 #pricing .pricing-card-wrapper .card .features-container {
@@ -1243,13 +1123,6 @@ footer .container .copyright p {
     border-bottom: none;
     padding-top: 5px;
     padding-inline: 32px;
-    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent */
-    backdrop-filter: blur(10px); /* Blurs content underneath */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
-  }
-  header.scrolled:hover {
-    background-color: rgba(255, 255, 255, 1);
   }
   header.scrolled .container {
     padding: 8px 16px;
@@ -1450,7 +1323,7 @@ footer .container .copyright p {
   }
 
   #users .user-chat .bottom-gradient {
-    background-image: linear-gradient(rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 1));
+    background-image: linear-gradient(rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1));
   }
 
   /* CARDS SECTION */
@@ -1660,39 +1533,6 @@ footer .container .copyright p {
     left: 36px;
   }
 
-
-
-#home .home-user-img1 {
-
-  animation: wiggle 3s ease-in-out infinite;
-}
-
-#home .home-user-img2 {
-
-  animation: wiggle 3s ease-in-out infinite 0.5s;
-}
-
-/* Define the wiggle keyframes */
-@keyframes wiggle {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(3px, -3px) rotate(1deg);
-  }
-  50% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  75% {
-    transform: translate(-3px, 3px) rotate(-1deg);
-  }
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-}
-
-  
-
   /* VIDEO */
   #video {
     padding-inline: 104px;
@@ -1752,7 +1592,7 @@ footer .container .copyright p {
   }
 
   #users .user-chat .bottom-gradient {
-    background-image: linear-gradient(rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 1));
+    background-image: linear-gradient(rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1));
   }
 
   #users .yellow-blur {
@@ -1894,7 +1734,7 @@ footer .container .copyright p {
     display: inline-block;
     position: absolute;
     top: -60px;
-    right: -12px;
+    right: 0;
   }
 
   /* PLACE ORDER SECTION */
