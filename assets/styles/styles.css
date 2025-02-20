@@ -1233,6 +1233,10 @@ footer .container  p {
   text-decoration: none;
   text-align: center;
   opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+footer .container  p:hover {
+  opacity: 0.9;
 }
 
 
