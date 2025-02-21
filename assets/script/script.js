@@ -71,36 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.5 });
 
-  // --- Video functionality ---
-  const video = document.getElementById("autoVideo");
-  if (video) {
-    // Set volume on by default
-    video.volume = 1;
-    
-    // Intersection Observer: play video when in view, pause when out of view
-    const videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      });
-    }, { threshold: 0.5 }); // Adjust threshold as needed
-
-    videoObserver.observe(video);
-
-    video.addEventListener('click', () => {
-      if (video.paused) {
-        video.play().catch(console.error);
-      } else {
-        video.pause();
-      }
-      // If the video is muted, unmute it after the first interaction
-      if (video.muted) {
-        video.muted = false;
-        console.log('Video unmuted.');
-      }
-    });
+  // Observe the card-wrapper to trigger the counter animation when it's in view
+  const cardWrapper = document.querySelector('#home .card-wrapper');
+  if (cardWrapper) {
+    observer.observe(cardWrapper);
   }
 });
