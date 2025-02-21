@@ -776,32 +776,6 @@ main .container {
   background: rgba(255, 195, 14, 0.85); /* Even softer yellow on press */
 }
 
-/* Chat to Sales Button */
-#pricing .container .pricing-card-wrapper .card .top-content .btn-container .btn-chat {
-  color: var(--gray-90);
-  background: var(--white);
-  border: 1px solid #d5d7da;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-#pricing .container .pricing-card-wrapper .card .top-content .btn-container .btn-chat:hover {
-  background: #f6f6f6; /* Slightly darker white */
-  color: var(--gray-90);
-  border-color: #c8cacc;
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-#pricing .container .pricing-card-wrapper .card .top-content .btn-container .btn-chat:active {
-  transform: scale(0.96); /* Slight press effect */
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
-  background: #eeeeee; /* Soft gray effect on press */
-}
 
 #pricing .container .pricing-card-wrapper .card .features-container {
   padding: 32px;
