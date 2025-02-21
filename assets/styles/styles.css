@@ -146,26 +146,7 @@ main .container {
   position: relative;
 }
 
-/* WHATSAPP ICON */
-main .container .whatsapp-icon-container {
-  position: sticky;
-  bottom: 16px;
-  right: 16px;
-  margin-left: auto;
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: flex-end;
-  width: 48px;
-  height: 48px;
-  border-radius: 999px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-}
 
-main .container .whatsapp-icon-container img {
-  width: 100%;
-  height: 100%;
-}
 
 /* HOME SECTION*/
 #home {
@@ -1943,8 +1924,167 @@ footer .container  p:hover {
     padding: 32px 112px;
   }
 }
-/* input,
-select,
-textarea {
-  cursor: url("data:image/svg+xml;utf8,<svg id='Layer_2' data-name='Layer 2' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 18.41 50.83'><defs><style>.cls-1{fill:%234169e1;stroke-width:0px;}</style></defs><g id='OBJECTS'><g><g><rect class='cls-1' x='7.82' y='.94' width='2.77' height='48.96' rx='.79' ry='.79'/><path class='cls-1' d='m9.8,50.83h-1.19c-.95,0-1.73-.77-1.73-1.73V1.73c0-.95.77-1.73,1.73-1.73h1.19c.95,0,1.73.77,1.73,1.73v47.37c0,.95-.77,1.73-1.73,1.73Zm-1.04-1.87h.9V1.87h-.9v47.09Z'/></g><g><rect class='cls-1' x='.93' y='.94' width='16.54' height='2.77' rx='.79' ry='.79'/><path class='cls-1' d='m16.69,4.64H1.73c-.95,0-1.73-.77-1.73-1.73v-1.19C0,.77.77,0,1.73,0h14.96c.95,0,1.73.77,1.73,1.73v1.19c0,.95-.77,1.73-1.73,1.73ZM1.87,2.77h14.67v-.9H1.87v.9Z'/></g><g><rect class='cls-1' x='.93' y='47.12' width='16.54' height='2.77' rx='.79' ry='.79'/><path class='cls-1' d='m16.69,50.83H1.73c-.95,0-1.73-.77-1.73-1.73v-1.19c0-.95.77-1.73,1.73-1.73h14.96c.95,0,1.73.77,1.73,1.73v1.19c0,.95-.77,1.73-1.73,1.73Zm-14.82-1.87h14.67v-.9H1.87v.9Z'/></g></g></g></svg>")0 0,  auto;
-} */
+
+
+
+
+/************************************************/
+/* 1. WhatsApp Icon (bottom-right) + Hover      */
+/************************************************/
+.whatsapp-icon-container {
+  position: fixed;   /* keeps it pinned to the screen */
+  bottom: 16px;
+  right: 16px;
+  width: 56px;       /* slightly bigger icon for a modern look */
+  height: 56px;
+  border-radius: 999px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  z-index: 999;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #25D366; /* optional: a green background behind the icon */
+  transition: transform 0.3s ease-in-out;
+}
+
+.whatsapp-icon-container img {
+  width: 70%;  /* control icon size inside the container */
+  height: 70%;
+}
+
+.whatsapp-icon-container:hover {
+  transform: scale(1.15);
+}
+
+/************************************************/
+/* 2. Slider Text (optional, shows on scroll)   */
+/************************************************/
+.slider-text {
+  display: none;             
+  background-color: #25D366; 
+  color: #fff;
+  padding: 8px 12px;
+  margin-left: 8px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.slider-text.show {
+  display: inline-block;
+  transform: translateX(0);
+}
+
+/************************************************/
+/* 3. Modern Chat Popup                         */
+/************************************************/
+/* Container for chat bubble */
+.whatsapp-chat-popup {
+  position: fixed;
+  bottom: 90px;         /* sits above the WhatsApp icon */
+  right: 16px;
+  width: 320px;
+  max-height: 480px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  display: none;        /* hidden by default */
+  flex-direction: column;
+  overflow: hidden;     /* if content grows, it will scroll inside */
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+}
+
+/* When active, smoothly pop in */
+.whatsapp-chat-popup.active {
+  display: flex;
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Chat Header */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #25D366;
+  color: #fff;
+  padding: 12px 16px;
+}
+
+/* Left side of header: icon + title */
+.chat-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
+}
+
+.header-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Close button */
+.close-chat {
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* Chat Body */
+.chat-body {
+  padding: 16px;
+  text-align: center;
+}
+
+/* Make the QR image smaller / more modern look */
+.qr-image {
+  width: 120px;
+  height: auto;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Link to open WhatsApp chat */
+.message-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  border-radius: 24px;
+  background-color: #25D366;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.message-link:hover {
+  background-color: #1eb152;
+}
+.whatsapp-chat-popup::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;       /* place it under the bubble */
+  right: 30px;         /* tweak to align with the icon */
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #fff; /* matches the bubble's background color */
+}
+
+main .container .whatsapp-icon-container img {
+  width: 100%;
+  height: 100%;
+}

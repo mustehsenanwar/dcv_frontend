@@ -649,11 +649,33 @@
             </div>
           </div>
         </section>
-        <div class="whatsapp-icon-container">
-          <a href="#">
-            <img src="./assets/images/whatsapp.png" alt="whatsapp" />
-          </a>
+        <!-- WhatsApp Icon Container (fixed at bottom-right) -->
+        <div class="whatsapp-icon-container" id="whatsappIcon">
+          <img src="./assets/images/whatsapp.png" alt="WhatsApp Icon" />
         </div>
+
+        <!-- Modern Chat Popup (initially hidden) -->
+        <div class="whatsapp-chat-popup" id="whatsappChatPopup">
+          <div class="chat-header">
+            <div class="chat-header-left">
+              <img src="./assets/images/whatsapp.png" alt="WhatsApp Icon" class="header-icon" />
+              <span class="header-title">WhatsApp Chat</span>
+            </div>
+            <span class="close-chat" id="closeChatBtn">&times;</span>
+          </div>
+          <div class="chat-body">
+            <img src="./assets/images/whatsapp-qr.png" alt="WhatsApp QR" class="qr-image" />
+            <p>Scan to start a chat or</p>
+            <a 
+            href="https://api.whatsapp.com/send?phone=+971524576221&text=Hello%2C%20I%27m%20interested%20in%20your%20CV%20writing%20services.%20Could%20you%20share%20more%20details%3F" 
+            target="_blank"
+            class="message-link"
+            >
+              Click here to message
+            </a>
+          </div>
+        </div>
+
       </div>
     </main>
 

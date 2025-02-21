@@ -15,21 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // HANDLE SCROLL - Adjust header on scroll
+  // HEADER SCROLL EFFECT
   window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
-    if (window.scrollY > 50) { // Adjust the threshold as needed
+    if (window.scrollY > 50) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
   });
 
-  // COUNTER ANIMATION
+  // COUNTER ANIMATION (unchanged)
   const counters = document.querySelectorAll('#home .card h3');
-  let hasAnimatedCounters = false; // Ensure the animation runs only once
+  let hasAnimatedCounters = false;
 
-  // Animate a single counter from 0 to target value
   function animateCounter(element, target, suffix, duration = 2000) {
     let start = null;
     function step(timestamp) {
@@ -44,12 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(step);
   }
 
-  // Animate all counters by extracting numbers and suffixes from text
   function animateCounters() {
     if (hasAnimatedCounters) return;
-    counters.forEach(counter => {
+    counters.forEach((counter) => {
       const text = counter.textContent.trim();
-      // Capture the digits and the following characters (e.g., "+" or "%")
       const match = text.match(/^(\d+)(.*)$/);
       if (match) {
         const target = parseInt(match[1], 10);
@@ -60,20 +57,46 @@ document.addEventListener('DOMContentLoaded', () => {
     hasAnimatedCounters = true;
   }
 
-  // Use Intersection Observer to trigger the animation when the card section is in view
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounters();
-        // Unobserve after triggering so it runs only once
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  // Observe the card-wrapper to trigger the counter animation when it's in view
   const cardWrapper = document.querySelector('#home .card-wrapper');
   if (cardWrapper) {
-    observer.observe(cardWrapper);
+    const countersObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    countersObserver.observe(cardWrapper);
   }
+
+  // WHATSAPP ICON + CHAT POPUP
+const whatsappIcon = document.getElementById("whatsappIcon");
+const chatPopup = document.getElementById("whatsappChatPopup");
+const closeChatBtn = document.getElementById("closeChatBtn");
+
+// Function to check if the user is on a mobile device or tablet
+function isMobileDevice() {
+  return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+if (whatsappIcon && chatPopup && closeChatBtn) {
+  // Toggle chat popup or redirect based on device type
+  whatsappIcon.addEventListener("click", () => {
+    if (isMobileDevice()) {
+      // If mobile, open WhatsApp directly
+      window.location.href =
+        "https://api.whatsapp.com/send?phone=+971524576221&text=Hello%2C%20I%27m%20interested%20in%20your%20CV%20writing%20services.%20Could%20you%20share%20more%20details%3F";
+    } else {
+      // If desktop, show popup
+      chatPopup.classList.toggle("active");
+    }
+  });
+
+  // Close chat on "X" click
+  closeChatBtn.addEventListener("click", () => {
+    chatPopup.classList.remove("active");
+  });
+}
+
 });
