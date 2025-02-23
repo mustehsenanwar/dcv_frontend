@@ -26,8 +26,18 @@ body {
   font-family: 'Roboto', sans-serif;
   background: var(--white);
   overflow-x: hidden;
+}
 
-  }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
+}
 
 /* a,button {
   cursor: url("data:image/svg+xml;utf8,<svg id='Layer_2' data-name='Layer 2' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 23.75 30.73'><defs><style>.cls-1{fill:%234169e1;}.cls-1,.cls-2,.cls-3{stroke-width:0px;}.cls-3{fill:%23fff;}</style></defs><g id='Layer_1-2' data-name='Layer 1'><g><g><path class='cls-3' d='m7.28,30.45v-.42c0-4.76-1.88-8.76-6.09-12.97C-.05,15.82.11,14.3.91,13.44c.43-.45,1.04-.71,1.69-.71.73,0,1.48.32,2.17.93.21.19.42.42.62.68l.5.67V2.97c0-1.77,1.26-2.69,2.51-2.69s2.51.92,2.51,2.69v4.55h.28c.75,0,2.14.13,3.03.93.12.11.24.23.35.38l.09.12h.15c.11-.02.29-.03.51-.03.76,0,2.18.12,3.08.92.12.11.24.23.35.38l.09.12h.15c.11-.02.29-.03.51-.03.76,0,2.17.12,3.08.92.57.51.88,1.23.88,2.09v3.07c0,2.81-.69,6.41-1.71,8.95-.91,2.27-1.09,4.7-1.09,4.73l-.03.39H7.28Z'/><path class='cls-2' d='m8.4.56c1.08,0,2.23.75,2.23,2.41v4.83h.56c.71,0,2.02.13,2.85.86.11.1.21.21.31.34l.18.24.3-.02c.11,0,.28-.02.49-.02.72,0,2.06.11,2.9.85.11.1.21.21.31.34l.18.24.3-.02c.11,0,.28-.02.49-.02.72,0,2.06.11,2.9.85.51.45.78,1.1.78,1.88v3.07c0,2.78-.68,6.33-1.69,8.84-.93,2.31-1.11,4.79-1.11,4.81v.13H7.56v-.14c0-4.84-1.9-8.9-6.17-13.17-1.17-1.17-.96-2.5-.27-3.23.37-.4.91-.63,1.48-.63.66,0,1.35.3,1.98.86.2.18.39.39.58.63l1.01,1.34V2.97c0-1.66,1.16-2.41,2.23-2.41Zm0-.56c-1.39,0-2.79,1.02-2.79,2.97v11.2c-.2-.27-.42-.51-.65-.72-.81-.71-1.63-1-2.35-1-.77,0-1.44.32-1.89.8-.9.95-1.08,2.64.29,4.01,4.15,4.16,6.01,8.09,6.01,12.77v.7h13.91l.05-.65s.18-2.43,1.07-4.64c1.03-2.57,1.73-6.21,1.73-9.05v-3.07c0-.94-.34-1.73-.97-2.29-.96-.85-2.4-.99-3.27-.99-.22,0-.41,0-.53.02-.11-.15-.24-.29-.38-.42-.96-.85-2.41-1-3.27-1-.22,0-.41,0-.53.02-.11-.15-.24-.29-.38-.42-.94-.83-2.35-.99-3.22-.99V2.97c0-1.95-1.4-2.97-2.79-2.97Z'/></g><path class='cls-1' d='m22.36,16.4c0,2.64-.67,6.14-1.63,8.53-.69,1.71-.98,3.49-1.1,4.41h-11.25c-.18-4.77-2.17-8.83-6.4-13.06-.78-.78-.68-1.62-.26-2.07.41-.44,1.26-.63,2.3.29.93.82,2.04,2.12,2.56,3.39h.42V2.97c0-1.09.7-1.57,1.4-1.57s1.4.49,1.4,1.57v11.01h1.4v-5.34c.71,0,1.72.13,2.29.65.34.3.5.71.5,1.25v3.42h1.4v-3.42c0-.17-.02-.34-.04-.5.71,0,1.74.13,2.33.65.34.3.5.71.5,1.25v3.42h1.4v-3.42c0-.17-.02-.34-.04-.5.71,0,1.74.12,2.33.65.34.3.5.71.5,1.25v3.07Z'/></g></g></svg>")0 0,  auto;
@@ -145,8 +155,6 @@ main .container {
   margin-inline: auto;
   position: relative;
 }
-
-
 
 /* HOME SECTION*/
 #home {
@@ -344,7 +352,6 @@ main .container {
   height: 100%;
   display: block;
 }
-
 
 /* @media (max-width: 768px) {
   #video .container {
@@ -776,7 +783,6 @@ main .container {
   background: rgba(255, 195, 14, 0.85); /* Even softer yellow on press */
 }
 
-
 #pricing .container .pricing-card-wrapper .card .features-container {
   padding: 32px;
 }
@@ -1012,7 +1018,8 @@ main .container {
   display: none;
 }
 
-/* PLACE ORDER SECTION */
+
+/* ------------------ PLACE ORDER SECTION ------------------ */
 #place-order {
   width: 100%;
 }
@@ -1020,9 +1027,10 @@ main .container {
 #place-order .container {
   padding: 48px 16px;
   max-width: 1440px;
+  margin: 0 auto;
 }
 
-#place-order .container .text-content h2 {
+#place-order .text-content h2 {
   font-size: 32px;
   font-weight: 600;
   color: var(--black);
@@ -1031,16 +1039,17 @@ main .container {
   text-align: center;
 }
 
-#place-order .container .text-content p {
+#place-order .text-content p {
   font-size: 18px;
   line-height: 28px;
   color: var(--gray-90);
   text-align: center;
   margin-top: 8px;
   margin-inline: auto;
+  max-width: 900px;
 }
 
-#place-order .container .form-container {
+#place-order .form-container {
   display: grid;
   gap: 24px;
   margin-top: 48px;
@@ -1048,117 +1057,498 @@ main .container {
   margin-inline: auto;
 }
 
-#place-order .container .form-container .file-input-container .upload-box {
+/* ------------------ PACKAGE & WHATSAPP FIELDS ------------------ */
+.file-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Container to hold Package & WhatsApp fields */
+.contact-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .contact-fields {
+    flex-direction: row;
+  }
+  .contact-fields > .package-container,
+  .contact-fields > .whatsapp-number-container {
+    flex: 1;
+  }
+}
+
+/* Package Dropdown Styles */
+.package-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.package-container label {
+  position: absolute;
+  top: 0%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: 600;
+  color: #667184;
+  background: #fff;
+  padding: 0 5px;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+.package-container select {
+  width: 100%;
+  height: 55px;
+  padding: 12px;
+  padding-right: 40px; /* extra space for the custom arrow */
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+
+  appearance: none;
+  background: #fff 
+    url("data:image/svg+xml,%3Csvg fill='%23667184' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%23667184' stroke-width='2'/%3E%3C/svg%3E")
+    no-repeat right 12px center;
+  background-size: 16px 16px;
+}
+
+
+
+
+/* Floating Label on Valid Selection */
+.package-container select:valid + label {
+  top: 8px;
+  font-size: 12px;
+  color: #007bff;
+}
+
+/* WhatsApp Container */
+.whatsapp-number-container {
+  position: relative;
+  width: 100%;
+}
+
+.whatsapp-number-container label {
+  position: absolute;
+  top: 0%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: 600;
+  color: #667184;
+  background: #fff;
+  padding: 0 5px;
+  transition: 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.whatsapp-number-container input {
+  width: 100%;
+  height: 55px; /* Matching height */
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s ease-in-out;
+  
+}
+
+.whatsapp-number-container input::placeholder {
+  color: #aaa;
+}
+
+.whatsapp-number-container input:hover, .package-container select:hover, .upload-box:hover {
+  border-color: rgb(197, 197, 197);
+
+}
+
+.whatsapp-number-container input:focus, .package-container select:focus {
+  border-color: #666;
+  box-shadow: 0 2px 6px rgba(96, 99, 101, 0.2);
+}
+
+.whatsapp-number-container input:focus + label,
+.whatsapp-number-container input:not(:placeholder-shown) + label {
+  top: 8px;
+  font-size: 12px;
+  color: #007bff;
+}
+
+
+/* ------------------ UPLOAD BOX ------------------ */
+.upload-box {
   display: grid;
   place-items: center;
-  height: 350px;
+  /* height: 100%; */
   border: 1px solid #e9eaeb;
   padding: 16px 24px;
   border-radius: 16px;
-  margin-bottom: 15px;
+  margin-top: 0px;
   cursor: pointer;
 }
 
-#place-order .container .form-container .file-input-container .upload-box img {
+.upload-box img {
   display: block;
   margin-inline: auto;
 }
 
-#place-order .container .form-container .file-input-container .upload-box p {
-  font-family: var(--font-inter);
+.upload-box .text-content-wrapper {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.upload-box p {
   font-size: 12px;
   line-height: 18px;
-  text-align: center;
+  color: var(--gray-90);
   margin-top: 12px;
+}
+
+.upload-box p span {
+  color: var(--blue);
+}
+
+/* Steps text inside upload box */
+.upload-box p.steps {
+  width: fit-content;
+  text-align: start;
+  margin: 8px auto 0 auto;
+}
+
+/* ------------------ PROGRESS CONTAINER ------------------ */
+.upload-progres-container {
+  display: none;
+  gap: 12px;
+  border: 1px solid #e9eaeb;
+  padding: 16px;
+  border-radius: 16px;
+  margin-top: 16px;
+}
+
+.upload-progres-container.active {
+  display: flex;
+}
+
+.main-content-progres {
+  width: 100%;
+}
+
+.main-content-progres .top-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-content-progres .top-content p {
+  font-size: 14px;
+  color: var(--black);
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.main-content-progres .size {
+  font-size: 14px;
+  color: var(--gray-90);
+  line-height: 20px;
+}
+
+.progres-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progres-wrapper {
+  width: 100%;
+  height: 8px;
+  background: var(--gray-90);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progres {
+  width: 0%;
+  height: 8px;
+  background: var(--blue);
+  border-radius: 99px;
+}
+
+.persentage {
+  font-size: 14px;
+}
+
+/* ------------------ PRICE, PAYMENT, BUTTONS ------------------ */
+.input-group-container .price {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 48px;
+  letter-spacing: -2%;
+  color: var(--black);
+  margin-top: 16px;
+}
+
+.input-group-container .price .line-through {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -2%;
+  color: var(--gray-90);
+  text-decoration: line-through;
+  margin-left: 8px;
+}
+
+.payment-group {
+  margin-top: 16px;
+}
+
+/* Base state: hidden */
+.payment-option {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  gap: 12px; /* keep spacing for child elements */
+}
+
+/* When active, expand fully */
+.payment-option.active {
+  max-height: 100%; /* or more if needed */
+  opacity: 1;
+}
+
+/* Each payment-option can contain a column layout */
+.payment-option.card-input-group,
+.payment-option.transfer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Example: If you have card details in child <div> */
+.card-input-group > div {
+  width: 100%;
+}
+
+/* Transfer Info Layout */
+.transfer-info .info-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.transfer-info .info-group ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.transfer-info .info-key {
+  color: var(--black);
+  font-size: 14px;
+}
+
+.transfer-info .info-value {
+  color: var(--gray-90);
+  font-size: 14px;
+}
+
+/* Upload Payment box */
+.upload-payment {
+  display: flex;
+  gap: 12px;
+  border: 1px solid #e9eaeb;
+  padding: 16px;
+  border-radius: 16px;
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+.upload-payment p {
+  font-size: 12px;
+  line-height: 18px;
   color: var(--gray-90);
 }
 
-#place-order .container .form-container .file-input-container .upload-box p span {
+.upload-payment p span {
   color: var(--blue);
 }
 
-#place-order .container .form-container .input-group-container .input-group {
+/* Payment toggle button container */
+.btn-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 16px;
+  place-items: end;
+  margin-top: 15px;
 }
 
-#place-order .container .form-container .input-group-container label,
-#place-order .container .form-container .input-group-container .input-group label {
+/* The toggle button itself */
+.button {
   font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  font-family: var(--font-inter);
-  color: var(--black);
-}
-
-#place-order .container .form-container .input-group-container .input-group label span {
   color: var(--blue);
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-#place-order .container .form-container .input-group-container .input-group input {
+/* Show/hide text for toggling button */
+.bank-transfer.active {
   display: inline-block;
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #d5d7da;
-  border-radius: 8px;
-  margin-top: 6px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-
-#place-order .container .form-container .input-group-container .input-group select {
+.bank-transfer {
+  display: none;
+}
+.via-debit {
+  display: none;
+}
+.via-debit.active {
   display: inline-block;
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #d5d7da;
-  border-radius: 8px;
-  margin-top: 6px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-#place-order .container .form-container .input-group-container textarea {
-  display: inline-block;
-  width: 100%;
-  height: 115px;
-  padding: 12px 14px;
-  border: 1px solid #d5d7da;
-  border-radius: 8px;
-  margin-top: 6px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+/* Example .payment container (if you have accepted-cards icons) */
+.form-container .payment {
+  /* If you want this to slide, you can also apply a similar approach:
+     max-height + opacity transitions. Or simply hide/show it with .active. */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.4s ease;
+}
+.form-container .payment:not(.active) {
+  opacity: 0;
+  pointer-events: none;
+}
+.form-container .payment.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-#place-order .container .form-container .input-group-container .btn {
+/* Price & button styles remain the same */
+.input-group-container .price {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 48px;
+  letter-spacing: -2%;
+  color: var(--black);
+  margin-top: 16px;
+}
+.input-group-container .price .line-through {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -2%;
+  color: var(--gray-90);
+  text-decoration: line-through;
+  margin-left: 8px;
+}
+
+.btn {
   background: #ffc107;
   color: var(--black);
   padding: 12px 18px;
   border: none;
   width: 100%;
   border-radius: 8px;
-  cursor:pointer;
+  cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
   margin-top: 24px;
 }
-
-#place-order .container .form-container .input-group-container .btn:hover {
+.btn:hover {
   background: #e0a800;
 }
 
-#place-order .container .form-container .input-group-container .payment {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 8px;
-  margin-top: 27px;
+
+
+
+
+.bank-details-container {
+  max-width: 600px;
+  margin: 20px 5px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
 }
 
-#place-order .container .form-container .input-group-container .payment p {
-  font-size: 12px;
-  line-height: 18px;
-  color: #717680;
+.bank-details-container h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
 }
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+}
+
+.detail-value {
+  flex: 1;
+  color: #555;
+  word-break: break-all;
+  margin: 0 8px;
+}
+
+.copy-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  background: #0056b3;
+}
+
+.qr-code-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.qr-code-container p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.qr-code {
+  max-width: 150px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+
+
 
 /* FOOTER */
 
@@ -1172,10 +1562,7 @@ footer .container {
   gap: 24px;
 }
 
-
-
-
-footer .container  p {
+footer .container p {
   font-family: var(--font-inter);
   font-size: 14;
   font-weight: 300;
@@ -1186,11 +1573,9 @@ footer .container  p {
   opacity: 0.5;
   transition: opacity 0.5s ease;
 }
-footer .container  p:hover {
+footer .container p:hover {
   opacity: 0.9;
 }
-
-
 
 @media (min-width: 768px) {
   /* HEADER */
@@ -1614,6 +1999,13 @@ footer .container  p:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  #place-order .container .form-container .input-group-container .price {
+    margin-top: 0px;
+  }
+  #place-order .container .form-container .input-group-container .input-group {
+    margin-top: 24px;
+  }
+
   /* FOOTER */
   footer .container .top-content {
     padding: 10px 32px;
@@ -1899,31 +2291,28 @@ footer .container  p:hover {
   }
 }
 
-
-
-
 /************************************************/
 /* 1. WhatsApp Icon (bottom-right) + Hover      */
 /************************************************/
 .whatsapp-icon-container {
-  position: fixed;   /* keeps it pinned to the screen */
+  position: fixed; /* keeps it pinned to the screen */
   bottom: 16px;
   right: 16px;
-  width: 56px;       /* slightly bigger icon for a modern look */
+  width: 56px; /* slightly bigger icon for a modern look */
   height: 56px;
   border-radius: 999px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
   z-index: 999;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #25D366; /* optional: a green background behind the icon */
+  background-color: #25d366; /* optional: a green background behind the icon */
   transition: transform 0.3s ease-in-out;
 }
 
 .whatsapp-icon-container img {
-  width: 70%;  /* control icon size inside the container */
+  width: 70%; /* control icon size inside the container */
   height: 70%;
 }
 
@@ -1935,8 +2324,8 @@ footer .container  p:hover {
 /* 2. Slider Text (optional, shows on scroll)   */
 /************************************************/
 .slider-text {
-  display: none;             
-  background-color: #25D366; 
+  display: none;
+  background-color: #25d366;
   color: #fff;
   padding: 8px 12px;
   margin-left: 8px;
@@ -1958,16 +2347,16 @@ footer .container  p:hover {
 /* Container for chat bubble */
 .whatsapp-chat-popup {
   position: fixed;
-  bottom: 90px;         /* sits above the WhatsApp icon */
+  bottom: 90px; /* sits above the WhatsApp icon */
   right: 16px;
   width: 320px;
   max-height: 480px;
   background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-  display: none;        /* hidden by default */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: none; /* hidden by default */
   flex-direction: column;
-  overflow: hidden;     /* if content grows, it will scroll inside */
+  overflow: hidden; /* if content grows, it will scroll inside */
   transform: translateY(20px) scale(0.95);
   opacity: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1986,7 +2375,7 @@ footer .container  p:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #25D366;
+  background-color: #25d366;
   color: #fff;
   padding: 12px 16px;
 }
@@ -2027,7 +2416,7 @@ footer .container  p:hover {
   height: auto;
   margin-bottom: 12px;
   border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Link to open WhatsApp chat */
@@ -2036,7 +2425,7 @@ footer .container  p:hover {
   margin-top: 10px;
   padding: 10px 16px;
   border-radius: 24px;
-  background-color: #25D366;
+  background-color: #25d366;
   color: #fff;
   text-decoration: none;
   font-weight: bold;
@@ -2049,8 +2438,8 @@ footer .container  p:hover {
 .whatsapp-chat-popup::before {
   content: '';
   position: absolute;
-  bottom: -10px;       /* place it under the bubble */
-  right: 30px;         /* tweak to align with the icon */
+  bottom: -10px; /* place it under the bubble */
+  right: 30px; /* tweak to align with the icon */
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
@@ -2061,4 +2450,125 @@ footer .container  p:hover {
 main .container .whatsapp-icon-container img {
   width: 100%;
   height: 100%;
+}
+
+
+
+
+#payment-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+/* Additional CSS styling... */
+.StripeElement {
+  background-color: #fff;
+  height: 55px;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.StripeElement--focus {
+  border-color: #666;
+  box-shadow: 0 2px 6px rgba(96, 99, 101, 0.2);
+}
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+#card-errors {
+  color: #fa755a;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+
+/* Help Contact Section */
+.help-contact {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #667184;
+  text-align: center;
+  margin: 10px 0px 20px 0px;
+  opacity: 0.7;
+}
+.help-contact:hover{
+  opacity: 1;
+}
+.help-contact .help-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+
+.secure-checkout-container {
+  max-width: 700px;            /* Adjust as needed */
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding: 16px 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  font-family: Arial, sans-serif;
+}
+
+/* Top Row */
+.secure-checkout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.secure-checkout-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.secure-checkout-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.secure-checkout-text {
+  font-weight: 600;
+  color: #666;
+  font-size: 14px;
+}
+
+.secure-checkout-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.stripe-logo {
+  width: 60px;   /* Adjust as needed */
+  height: auto;
+}
+
+/* Bottom Row: Bank Logos */
+.secure-checkout-logos {
+  display: flex;
+  flex-wrap: wrap;      /* If you have many logos, they can wrap to the next line */
+  justify-content: center;
+  align-items: center;
+  gap: 16px;            /* Space between logos */
+}
+
+.secure-checkout-logos img {
+  max-height: 32px;     /* Uniform height for logos */
+  object-fit: contain;  /* Keep the aspect ratio */
 }

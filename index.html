@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles/styles.css" />
+    <script src="https://js.stripe.com/v3/"></script>
     <title>DUBAICV</title>
   </head>
   <body>
@@ -75,19 +76,14 @@
         <section id="video">
           <div class="container">
             <div class="video-wrapper">
-              <iframe 
-                src="https://player.vimeo.com/video/1058861576?h=295d102c5b&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                frameborder="0" 
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-                title="Vimeo Video">
-              </iframe>
+              <iframe src="https://player.vimeo.com/video/1058861576?h=295d102c5b&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Vimeo Video"> </iframe>
             </div>
           </div>
         </section>
         <script src="https://player.vimeo.com/api/player.js"></script>
-        
+
         <script src="https://player.vimeo.com/api/player.js"></script>
-        
+
         <section id="performance">
           <div class="container">
             <div class="text-content">
@@ -327,7 +323,6 @@
                   </div>
                   <div class="btn-container">
                     <button class="btn-get-started">Order Now</button>
-                   
                   </div>
                 </div>
                 <div class="features-container">
@@ -603,50 +598,214 @@
           <div class="container">
             <div class="text-content">
               <h2>Place Order</h2>
-              <p>Upload your data, such as your old resume and profile picture, to help us start with a basic version tailored to your target job positions.</p>
+              <p>
+                Fill in your details below. Our team will contact you on WhatsApp to schedule a 20-minute consultation to create an ATS-friendly CV that highlights your unique skills.
+              </p>
             </div>
+        
             <div class="form-container">
+              <!-- Start of File Input & Package/WhatsApp Fields -->
               <div class="file-input-container">
-                <div class="upload-box" onclick="document.getElementById('fileInput').click()">
-                  <div>
-                    <img src="./assets/icon/upload.png" alt="icon" />
-                    <p>
-                      <span>Click to upload</span> or drag and drop <br />
-                      SVG, PNG, JPG, DOCX, .WORD, PDF (max. 10mb)
-                    </p>
-                  </div>
-                </div>
-                <input type="file" id="fileInput" style="display: none" />
-              </div>
-              <div class="input-group-container">
-                <div class="input-group">
-                  <div>
-                    <label for="whatsapp">Whatsapp number<span>*</span></label>
-                    <input type="number" id="whatsapp" placeholder="Enter whatsapp number" required />
-                  </div>
-                  <div>
-                    <label for="package">Package<span>*</span></label>
+                <!-- Wrapper for side-by-side fields -->
+                
+                <div class="contact-fields">
+                  <!-- Package Field -->
+                  <div class="package-container">
+                    <label for="package">Package <span>*</span></label>
                     <select id="package" required>
-                      <option value="">Select package</option>
+                      <!-- Provide a hidden placeholder option -->
+                      <option value="" disabled selected hidden>Select a Package</option>
+                      <option value="Resume + Cover Letter">Resume + Cover Letter</option>
                       <option value="basic">Basic</option>
                       <option value="standard">Standard</option>
                       <option value="premium">Premium</option>
                     </select>
                   </div>
+            
+                  <!-- WhatsApp Field -->
+                  <div class="whatsapp-number-container">
+                    <label for="whatsapp">WhatsApp Number <span>*</span></label>
+                    <input type="number" id="whatsapp" placeholder="e.g +971524576221" required />
+                  </div>
                 </div>
-                <label for="message">Message</label>
-                <textarea id="message" placeholder="Enter your message..."></textarea>
-                <button class="btn">Get started</button>
-
-                <div class="payment">
-                  <img src="./assets/icon/visa.png" alt="payment card" />
-                  <img src="./assets/icon/mastercard.png" alt="payment card" />
-                  <p>Only Master and Visa Debit cards are accepted*</p>
+            
+                <!-- Existing Upload Box -->
+                <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+                  <div>
+                    <img src="./assets/icon/upload.png" alt="icon" />
+                    <div class="text-content-wrapper">
+                      <p>
+                        <span>Click to upload</span> or drag and drop (Multiple files supported)
+                        <br />
+                        PDF, DOCX, PNG, JPG (max. 5mb)
+                      </p>
+                      <p class="steps">
+                        1 - Upload old CV <br />
+                        2 - Upload Picture <br />
+                        3 - Other Supported Documents<br /><br />
+                        
+                        <b>Note:</b> This field is optional
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <input type="file" id="fileInput" style="display: none" />
+            
+                <!-- Upload Progress Container -->
+                <div class="upload-progres-container" id="uploadProgressContainer">
+                  <div><img src="./assets/icon/file-type.png" alt="icon" /></div>
+                  <div class="main-content-progres">
+                    <div class="top-content">
+                      <p></p>
+                      <input type="checkbox" class="checkbox" />
+                    </div>
+                    <p class="size"></p>
+                    <div class="progres-container">
+                      <div class="progres-wrapper">
+                        <div class="progres"></div>
+                      </div>
+                      <div class="persentage">0%</div>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <!-- End of File Input & Package/WhatsApp Fields -->
+            
+              <div class="input-group-container">
+                <!-- Price Info (unchanged) -->
+                <div class="price">
+                  Total Price: 200 AED 
+                </div>
+              
+                <div class="input-group">
+                  <!-- Payment Fields -->
+                  <div class="payment-group">
+                    <!-- Card Payment Container -->
+                    <div class="payment-option card-input-group active" id="cardPayment">
+                      <div id="card-element"></div>
+                    </div>
+                
+                    <!-- Bank Transfer Container -->
+                    <div class="payment-option transfer-info" id="bankTransfer">
+                        <div class="bank-details-container">
+                          <h3>Bank Details</h3>
+                          <div class="detail-item">
+                            <span class="detail-label">Bank Name:</span>
+                            <span class="detail-value" id="bankName">Mashreq Neo</span>
+                            <button class="copy-btn" data-target="bankName">Copy</button>
+                          </div>
+                          <div class="detail-item">
+                            <span class="detail-label">Account Holder Name:</span>
+                            <span class="detail-value" id="accountHolder">Mustehsen Anwar</span>
+                            <button class="copy-btn" data-target="accountHolder">Copy</button>
+                          </div>
+                          <div class="detail-item">
+                            <span class="detail-label">Account Number:</span>
+                            <span class="detail-value" id="accountNumber">019100403835</span>
+                            <button class="copy-btn" data-target="accountNumber">Copy</button>
+                          </div>
+                          <div class="detail-item">
+                            <span class="detail-label">IBAN:</span>
+                            <span class="detail-value" id="iban">AE100330000019100403835</span>
+                            <button class="copy-btn" data-target="iban">Copy</button>
+                          </div>
+                          <div class="detail-item">
+                            <span class="detail-label">Branch:</span>
+                            <span class="detail-value" id="branch">Al Ghurair City, 399-C AGC, Al Rigga Street</span>
+                            <button class="copy-btn" data-target="branch">Copy</button>
+                          </div>
+                          <div class="detail-item">
+                            <span class="detail-label">Swift Code:</span>
+                            <span class="detail-value" id="swiftCode">BOMLAEAD</span>
+                            <button class="copy-btn" data-target="swiftCode">Copy</button>
+                          </div>
+                          
+                          <!-- QR Code Section -->
+                          <div class="qr-code-container">
+                            <p>Pay via Mobile: Scan QR Code</p>
+                            <img src="./assets/images/whatsapp-qr.png" alt="QR Code for Mobile Payment" class="qr-code" />
+                          </div>
+                        </div>
+                        
+                
+                      <div
+                        class="upload-payment"
+                        onclick="document.getElementById('fileInput2').click()"
+                      >
+                        <img src="./assets/icon/upload.png" alt="icon" />
+                        <div class="text-content-wrapper">
+                          <p>
+                            <span>Click to upload</span> or drag and drop to add payment receipt.
+                          </p>
+                        </div>
+                      </div>
+                      <input type="file" id="fileInput2" style="display: none" />
+                    </div>
+                
+                    <div class="btn-container">
+                      <!-- Toggle Button -->
+                      <button class="button btn-change-payment" id="togglePaymentBtn">
+                        <!-- By default, show "Pay via Bank Transfer" text, hide "Pay via Debit..." -->
+                        <span class="bank-transfer active">Pay via Bank Transfer</span>
+                        <span class="via-debit">Pay Via Debit or Credit Card</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                
+              
+                <!-- Place Order Button -->
+                <button class="btn">Place Order</button>
+              
+                <!-- Help Contact Section -->
+                <div class="help-contact">
+                  <img src="./assets/images/help.png" alt="Help Icon" class="help-icon" />
+                  <span>Need help! Call or WhatsApp us 24/7 at +971 52 457 6221.</span>
+                </div>
+              
+                <!-- Secure Payment Section -->
+                <div class="secure-checkout-container">
+                  <!-- Top Row: Lock icon, "Guaranteed safe & secure checkout" and "Powered by Stripe" -->
+                  <div class="secure-checkout-header">
+                    <div class="secure-checkout-left">
+                      <img
+                        src="./assets/images/lock.svg"
+                        alt="Lock icon"
+                        class="secure-checkout-icon"
+                      />
+                      <span class="secure-checkout-text">Guaranteed safe &amp; secure checkout</span>
+                    </div>
+                    <div class="secure-checkout-right">
+                      <span>Powered by</span>
+                      <img
+                        src="./assets/images/stripe1.png"
+                        alt="Stripe Logo"
+                        class="stripe-logo"
+                      />
+                    </div>
+                  </div>
+                
+                  <!-- Bottom Row: Replace these logos with Dubai bank logos -->
+                  <div class="secure-checkout-logos">
+                    <!-- Example placeholders; replace with your own bank logos -->
+                    <img src="./assets/images/mashreq-bank.png" alt="Mashreq BankLogo" />
+                    <img src="./assets/images/emiratesnbd-bank.png" alt="DFC Logo" />
+                    <img src="./assets/images/adcb-bank.png" alt="ADCB Logo" />
+                    <img src="./assets/images/rack-bank.png" alt="RAKBANK Logo" />
+                    <img src="./assets/images/dib-bank.jpeg" alt="dubai islamic bank Logo" />
+                  </div>
+                </div>
+                
+              </div>
+              
+              
             </div>
+            
           </div>
         </section>
+        
+
+
         <!-- WhatsApp Icon Container (fixed at bottom-right) -->
         <div class="whatsapp-icon-container" id="whatsappIcon">
           <img src="./assets/images/whatsapp.png" alt="WhatsApp Icon" />
@@ -664,24 +823,18 @@
           <div class="chat-body">
             <img src="./assets/images/whatsapp-qr.png" alt="WhatsApp QR" class="qr-image" />
             <p>Scan to start a chat or</p>
-            <a 
-            href="https://api.whatsapp.com/send?phone=+971524576221&text=Hello%2C%20I%27m%20interested%20in%20your%20CV%20writing%20services.%20Could%20you%20share%20more%20details%3F" 
-            target="_blank"
-            class="message-link"
-            >
-              Click here to message
-            </a>
+            <a href="https://api.whatsapp.com/send?phone=+971524576221&text=Hello%2C%20I%27m%20interested%20in%20your%20CV%20writing%20services.%20Could%20you%20share%20more%20details%3F" target="_blank" class="message-link"> Click here to message </a>
           </div>
         </div>
-
       </div>
     </main>
 
     <footer>
       <div class="container">
-          <p>© 2025 DUBAICV - Register a business under Expromarket at HDS Tower, JLT, Dubai </p>
+        <p>© 2025 DUBAICV - Register a business under Expromarket at HDS Tower, JLT, Dubai</p>
       </div>
     </footer>
     <script src="./assets/script/script.js"></script>
+  <script src="./assets/script/stripe-payment.js"></script>
   </body>
 </html>
